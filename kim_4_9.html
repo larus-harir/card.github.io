@@ -1,0 +1,252 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+
+    <script src="https://code.jquery.com/jquery-1.12.4.min.js"></script>
+
+    <script>
+        $(function() {
+            var arrayS = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
+            // var arrayH = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
+            // var arrayD = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
+            // var arrayC = ["A", 2, 3, 4, 5, 6, 7, 8, 9, 10, "J", "Q", "K"];
+            var i = 0;
+            var sum = 0;
+            var rand = 0;
+            $('#drow').stop().click(function() {
+                rand = Math.ceil(Math.random() * 4);
+                var num = arrayS.splice(Math.floor(Math.random() * arrayS.length), 1)[0];
+                switch (rand) {
+                    case 1:
+                        $(".card" + i.toString() + " h1").text(num);
+                        $(".card" + i.toString() + " h2").text("\u2660");
+                        if (num == "A" || num == "J" || num == "Q" || num == "K") {
+                            sum += 10;
+                        } else {
+                            sum += num;
+                        }
+                        break;
+
+                    case 2:
+                        $(".card" + i.toString() + " h1").text(num);
+                        $(".card" + i.toString() + " h2").text("\u2665");
+                        if (num == "A" || num == "J" || num == "Q" || num == "K") {
+                            sum += 10;
+                        } else {
+                            sum += num;
+                        }
+                        break;
+
+                    case 3:
+                        $(".card" + i.toString() + " h1").text(num);
+                        $(".card" + i.toString() + " h2").text("\u2666");
+                        if (num == "A" || num == "J" || num == "Q" || num == "K") {
+                            sum += 10;
+                        } else {
+                            sum += num;
+                        }
+                        break;
+
+                    case 4:
+                        $(".card" + i.toString() + " h1").text(num);
+                        $(".card" + i.toString() + " h2").text("\u2663");
+                        if (num == "A" || num == "J" || num == "Q" || num == "K") {
+                            sum += 10;
+                        } else {
+                            sum += num;
+                        }
+                        break;
+                    default:
+                        break;
+                }
+
+                if (rand == 2 || rand == 3) {
+                    $(".card" + i.toString()).css({
+                        borderColor: "rgb(255, 80, 80)",
+                        color: "rgb(255, 80, 80)"
+                    })
+                } else {
+                    $(".card" + i.toString()).css({
+                        borderColor: "rgb(0, 80, 80)",
+                        color: "rgb(0, 80, 80)"
+                    })
+                }
+                i++;
+            })
+
+            $('#restart').stop().click(function() {
+                $('.card li h1').text("숫자");
+                $('.card li h2').text("문양");
+                $('#pl1 h2').text("합");
+                $('#pl2 h2').text("합");
+                $(".card li").css({
+                    color: "black",
+                    borderColor: "rgb(0, 80, 80) rgb(0, 80, 80) rgb(255, 80, 80) rgb(255, 80, 80)"
+                })
+                i = 0;
+                sum = 0;
+            })
+
+            $('#score1').click(function() {
+                $('#pl1 h2').text(sum);
+                $('.card li h1').text("숫자");
+                $('.card li h2').text("문양");
+
+                $(".card li").css({
+                    color: "black",
+                    borderColor: "rgb(0, 80, 80) rgb(0, 80, 80) rgb(255, 80, 80) rgb(255, 80, 80)"
+                })
+                i = 0;
+                sum = 0;
+            })
+            $('#score2').click(function() {
+                $('#pl2 h2').text(sum);
+                $('.card li h1').text("숫자");
+                $('.card li h2').text("문양");
+
+                $(".card li").css({
+                    color: "black",
+                    borderColor: "rgb(0, 80, 80) rgb(0, 80, 80) rgb(255, 80, 80) rgb(255, 80, 80)"
+                })
+                i = 0;
+                sum = 0;
+            })
+
+        })
+    </script>
+
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+        }
+        
+        main {
+            margin-top: 5%;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            width: 100%;
+        }
+        
+        ul {
+            list-style: none;
+        }
+        
+        .card {
+            display: flex;
+            justify-content: space-around;
+            width: 100%;
+        }
+        
+        .card li {
+            width: 15%;
+            height: 300px;
+            border: 3px solid;
+            border-color: rgb(0, 80, 80) rgb(0, 80, 80) rgb(255, 80, 80) rgb(255, 80, 80);
+            text-align: center;
+        }
+        
+        .playzone {
+            margin-top: 5%;
+            display: flex;
+            align-items: center;
+            text-align: center;
+            justify-content: space-around;
+        }
+        
+        .player {
+            display: flex;
+        }
+        
+        .player button {
+            border-radius: 50px;
+            width: 250px;
+            height: 100px;
+            font-size: 2rem;
+            font-weight: bold;
+            background-color: transparent;
+        }
+        
+        #button-div button {
+            border-radius: 150px;
+            width: 150px;
+            height: 150px;
+            color: rgb(0, 80, 80);
+            border: 3px solid rgb(0, 80, 80);
+            background-color: transparent;
+            font-size: 2rem;
+            font-weight: bold;
+        }
+        
+        #button-div button:active {
+            border: 3px solid rgb(255, 80, 80);
+            color: rgb(255, 80, 80);
+        }
+        
+        #button-div #drow {
+            border: 3px solid rgb(255, 80, 80);
+            color: rgb(255, 80, 80);
+        }
+        
+        #button-div #drow:active {
+            color: rgb(0, 80, 80);
+            border: 3px solid rgb(0, 80, 80);
+        }
+    </style>
+
+</head>
+
+<body>
+
+    <main>
+        <ul class="card">
+            <li class="card0">
+                <h1>숫자</h1>
+                <h2>문양</h2>
+            </li>
+
+            <li class="card1">
+                <h1>숫자</h1>
+                <h2>문양</h2>
+            </li>
+
+            <li class="card2">
+                <h1>숫자</h1>
+                <h2>문양</h2>
+            </li>
+            <li class="card3">
+                <h1>숫자</h1>
+                <h2>문양</h2>
+            </li>
+        </ul>
+    </main>
+
+    <div class="playzone">
+        <div>
+            <ul class="player">
+                <li id="pl1">
+                    <button id="score1">플레이어1</button>
+                    <h2>합</h2>
+                </li>
+                <li id="pl2">
+                    <button id="score2">플레이어2</button>
+                    <h2>합</h2>
+                </li>
+            </ul>
+        </div>
+        <div id="button-div">
+            <button id="drow">뽑기</button>
+            <button id="restart">재시작</button>
+        </div>
+    </div>
+    <!-- 아니 잘 했는데 블랙잭일때 어떻게함? a k 나왔을떄 어쩌지? 몰겠네? -->
+
+</body>
+
+</html>
