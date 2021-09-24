@@ -18,7 +18,7 @@
             var i = 0;
             var sum = 0;
             var rand = 0;
-            $('#drow').click(function() {
+            $('#drow').stop().click(function() {
                 rand = Math.ceil(Math.random() * 4);
                 var num = arrayS.splice(Math.floor(Math.random() * arrayS.length), 1)[0];
                 switch (rand) {
@@ -79,7 +79,7 @@
                 i++;
             })
 
-            $('#restart').click(function() {
+            $('#restart').stop().click(function() {
                 $('.card li h1').text("숫자");
                 $('.card li h2').text("문양");
                 $('#pl1 h2').text("합");
